@@ -1,5 +1,5 @@
 {
-    "serverUrl": "https://dev.asialjim.cn/api/rest/clinc",
+    "serverUrl": "https://dev.gateway.api.asialjim.cn/api/rest/clinc",
     "outPath": "src/main/resources/static/doc",
     "isStrict": false,
     "allInOne": true,
@@ -12,14 +12,6 @@
     "requestHeaders": [
         {
             "name": "authorization",
-            "type": "string",
-            "desc": "用户令牌",
-            "required": true,
-            "pathPatterns": "/api/**",
-            "excludePathPatterns": "/api/open/**"
-        },
-        {
-            "name": "x-user-token",
             "type": "string",
             "desc": "用户令牌",
             "required": true,

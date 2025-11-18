@@ -1,0 +1,224 @@
+{
+  "basePath": "/",
+  "paths": {
+    "/prescription/reminder/list": {
+      "get": {
+        "summary": "获取当前用户具有查询权限的就诊提醒记录",
+        "deprecated": false,
+        "description": "当用户是手机号用户时，只能查询自己的提醒记录，当用户时专业用户时可以查询所有记录或者根据姓名、证件号、手机号查询记录",
+        "tags": [
+          "PrescriptionRemindController",
+          "用户提醒器"
+        ],
+        "responses": {
+          "200": {
+            "schema": {
+              "$ref": "#/definitions/15432c55f67a3b7cde8a534586377b31"
+            },
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error",
+            "content": {
+              "*/*": {
+                "schema": {
+                  "$ref": "#/definitions/8e6482270bc9d0f7fc517625cf8d519e"
+                }
+              }
+            }
+          }
+        },
+        "operationId": "list_e705d8b8891b5a939f4f465b9c183670UsingOnGET",
+        "parameters": [
+          {
+            "in": "query",
+            "description": "{@link Long 分页参数：页码}",
+            "type": "number",
+            "required": false,
+            "name": "page"
+          },
+          {
+            "in": "query",
+            "description": "{@link Long 分页参数：页大小}",
+            "type": "number",
+            "required": false,
+            "name": "size"
+          },
+          {
+            "in": "query",
+            "description": "{@link String 姓名}",
+            "type": "string",
+            "required": false,
+            "name": "name"
+          },
+          {
+            "in": "query",
+            "description": "{@link String 证件号}",
+            "type": "string",
+            "required": false,
+            "name": "idNo"
+          },
+          {
+            "in": "query",
+            "description": "{@link String 手机号}",
+            "type": "string",
+            "required": false,
+            "name": "phone"
+          }
+        ]
+      }
+    }
+  },
+  "host": "https://dev.gateway.api.asialjim.cn/api/rest/clinc",
+  "definitions": {
+    "defaultPrimitive": {
+      "format": "string",
+      "type": "string"
+    },
+    "15432c55f67a3b7cde8a534586377b31": {
+      "type": "object",
+      "properties": {
+        "page": {
+          "format": "int64",
+          "description": "当前页码",
+          "type": "number",
+          "example": 0
+        },
+        "pages": {
+          "format": "int64",
+          "description": "总页码",
+          "type": "number",
+          "example": 0
+        },
+        "size": {
+          "format": "int64",
+          "description": "页宽度",
+          "type": "number",
+          "example": 0
+        },
+        "total": {
+          "format": "int64",
+          "description": "总记录条数",
+          "type": "number",
+          "example": 0
+        },
+        "data": {
+          "description": "当前页记录",
+          "type": "array",
+          "items": {
+            "$ref": "#/definitions/8104dd8689d2ad7e7c42dd73ccd5f58c"
+          }
+        }
+      }
+    },
+    "d751713988987e9331980363e24189ce": {},
+    "8e6482270bc9d0f7fc517625cf8d519e": {
+      "type": "object",
+      "properties": {
+        "status": {
+          "format": "int32",
+          "description": "网络状态码",
+          "type": "integer",
+          "example": 0
+        },
+        "thr": {
+          "format": "boolean",
+          "description": "是否弹窗提示错误",
+          "type": "boolean",
+          "example": true
+        },
+        "pageable": {
+          "format": "boolean",
+          "description": "是否是分页返回结果",
+          "type": "boolean",
+          "example": true
+        },
+        "code": {
+          "format": "string",
+          "description": "业务状态码",
+          "type": "string"
+        },
+        "msg": {
+          "format": "string",
+          "description": "错误提示信息",
+          "type": "string"
+        },
+        "data": {
+          "description": "业务数据(object)",
+          "type": "object"
+        },
+        "errs": {
+          "description": "错误详情",
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "example": "\"\"\",\"\"\""
+        },
+        "page": {
+          "format": "int64",
+          "description": "分页返回参数：当前页码",
+          "type": "number",
+          "example": 0
+        },
+        "size": {
+          "format": "int64",
+          "description": "分页返回参数：每页记录数",
+          "type": "number",
+          "example": 0
+        },
+        "pages": {
+          "format": "int64",
+          "description": "分页返回参数：总页码数",
+          "type": "number",
+          "example": 0
+        },
+        "total": {
+          "format": "int64",
+          "description": "分页返回参数：总记录条数",
+          "type": "number",
+          "example": 0
+        }
+      }
+    },
+    "8104dd8689d2ad7e7c42dd73ccd5f58c": {
+      "type": "object",
+      "properties": {
+        "lastDate": {
+          "format": "string",
+          "description": "上次日期",
+          "type": "string",
+          "example": "yyyy-MM-dd"
+        },
+        "lastDays": {
+          "format": "int32",
+          "description": "上次有效期",
+          "type": "integer",
+          "example": 0
+        },
+        "nextDate": {
+          "format": "string",
+          "description": "下次日期",
+          "type": "string",
+          "example": "yyyy-MM-dd"
+        },
+        "phone": {
+          "format": "string",
+          "description": "用户手机号",
+          "type": "string"
+        }
+      }
+    }
+  },
+  "swagger": "2.0",
+  "info": {
+    "title": "clinc-service-web",
+    "version": "1.0.0"
+  },
+  "tags": [
+    {
+      "name": "PrescriptionRemindController",
+      "description": "用户提醒器"
+    }
+  ]
+}
