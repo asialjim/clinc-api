@@ -16,6 +16,8 @@
 
 package com.asialjim.clinc.vo;
 
+import com.asialjim.microapplet.sensitive.annotation.Sensitive;
+import com.asialjim.microapplet.sensitive.handler.SensitiveType;
 import lombok.Data;
 import lombok.experimental.Accessors;
 
@@ -51,5 +53,6 @@ public class PrescriptionRemindVo implements Serializable {
     /**
      * 用户手机号
      */
+    @Sensitive(SensitiveType.ChineseMobilePhone)
     private String phone;
 }
