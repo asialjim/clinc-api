@@ -29,4 +29,5 @@ import org.apache.ibatis.annotations.Mapper;
  * @since 2025/10/22, &nbsp;&nbsp; <em>version:1.0</em>
  */
 public interface PrescriptionRecordMapperService extends IService<PrescriptionRecordPo> {
+    PrescriptionRecordPo queryById(String id);
 }

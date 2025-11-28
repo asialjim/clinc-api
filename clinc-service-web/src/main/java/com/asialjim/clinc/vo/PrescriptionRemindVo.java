@@ -39,17 +39,25 @@ public class PrescriptionRemindVo implements Serializable {
     private static final long serialVersionUID = 3340006264232664656L;
 
     /**
+     * 记录编号
+     */
+    private String id;
+
+    /**
      * 上次日期
      */
     private LocalDate lastDate;
+
     /**
      * 上次有效期
      */
     private Integer lastDays;
+
     /**
      * 下次日期
      */
     private LocalDate nextDate;
+
     /**
      * 用户手机号
      */

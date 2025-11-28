@@ -18,6 +18,7 @@ package com.asialjim.clinc;
 
 import org.springframework.cloud.openfeign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.ComponentScans;
 import org.springframework.context.annotation.Configuration;
 
 /**
@@ -28,7 +29,10 @@ import org.springframework.context.annotation.Configuration;
  * @since 2025/9/23, &nbsp;&nbsp; <em>version:1.0</em>
  */
 @Configuration
-@ComponentScan
 @EnableFeignClients
+@ComponentScans({
+        @ComponentScan,
+        @ComponentScan("com.asialjim.microapplet")
+})
 public class ClincCloudBean {
 }

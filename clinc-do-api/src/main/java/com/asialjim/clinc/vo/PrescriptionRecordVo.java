@@ -22,6 +22,7 @@ import lombok.experimental.Accessors;
 import java.io.Serial;
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 /**
  * 用药记录
@@ -36,8 +37,21 @@ public class PrescriptionRecordVo implements Serializable {
 
     @Serial
     private static final long serialVersionUID = 8898525677904068895L;
+    private String id;
     private String userid;
+    private String doctorId;
+    private String nurseId;
+    private String medicine;
     private LocalDate visitDate;
     private Integer preDays;
     private LocalDate nextVisitDate;
+    private LocalDate remindDate;
+    private Boolean remindState;
+    private Boolean remindEnable;
+    private String testPlain;
+    private Boolean lastRecord;
+    private String remark;
+    private LocalDateTime createTime;
+    private LocalDateTime updateTime;
+
 }

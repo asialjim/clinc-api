@@ -38,4 +38,8 @@ public class PrescriptionRecordService {
     public PageData<PrescriptionRecordVo> queryLastRecord(Long page, Long size, QueryLastPrescriptionRecordReq req) {
         return this.prescriptionRecordRepository.queryLastRecord(page, size, req);
     }
+
+    public PrescriptionRecordVo queryById(String id) {
+        return this.prescriptionRecordRepository.queryById(id);
+    }
 }

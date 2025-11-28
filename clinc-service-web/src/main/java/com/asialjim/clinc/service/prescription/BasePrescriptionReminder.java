@@ -80,6 +80,7 @@ public abstract class BasePrescriptionReminder implements Comparable<BasePrescri
 
         return PageData.of(records, item -> {
             PrescriptionRemindVo vo = new PrescriptionRemindVo();
+            vo.setId(item.getId());
             vo.setLastDate(item.getVisitDate());
             vo.setLastDays(item.getPreDays());
             vo.setNextDate(item.getNextVisitDate());

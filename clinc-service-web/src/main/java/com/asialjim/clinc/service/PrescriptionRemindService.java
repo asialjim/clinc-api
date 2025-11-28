@@ -16,17 +16,22 @@
 
 package com.asialjim.clinc.service;
 
+import com.asialjim.clinc.api.PrescriptionRecordApi;
 import com.asialjim.clinc.service.prescription.BasePrescriptionReminder;
+import com.asialjim.clinc.vo.PrescriptionRecordVo;
 import com.asialjim.clinc.vo.PrescriptionRemindVo;
 import com.asialjim.microapplet.common.page.PageData;
 import com.asialjim.microapplet.common.security.MamsSession;
 import com.asialjim.microapplet.common.security.MamsSessionAttribute;
+import com.asialjim.microapplet.commons.security.AuthorityRes;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 提示器服务
@@ -40,10 +45,22 @@ import java.util.List;
 public class PrescriptionRemindService {
     private final MamsSessionAttribute mamsSessionAttribute;
     private final List<BasePrescriptionReminder> reminders;
+    private final PrescriptionRecordApi prescriptionRecordApi;
 
     @PostConstruct
     public void init() {
         this.reminders.sort(BasePrescriptionReminder::compareTo);
+    }
+
+
+    public PrescriptionRecordVo queryById(String id) {
+        PrescriptionRecordVo vo = this.prescriptionRecordApi.queryById(id);
+        if (Objects.nonNull(vo)) {
+            MamsSession mamsSession = this.mamsSessionAttribute.currentLoginSession();
+            if (!StringUtils.equals(mamsSession.getUserid(), vo.getUserid()))
+                AuthorityRes.NoPermission.thr();
+        }
+        return vo;
     }
 
     public PageData<PrescriptionRemindVo> query(

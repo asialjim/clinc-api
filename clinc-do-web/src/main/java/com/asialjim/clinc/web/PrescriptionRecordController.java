@@ -47,4 +47,9 @@ public class PrescriptionRecordController implements PrescriptionRecordApi {
                                                           @RequestBody QueryLastPrescriptionRecordReq req) {
         return this.prescriptionRecordService.queryLastRecord(page, size, req);
     }
+
+    @Override
+    public PrescriptionRecordVo queryById(String id) {
+        return this.prescriptionRecordService.queryById(id);
+    }
 }

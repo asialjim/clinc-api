@@ -1,3 +1,19 @@
+/*
+ *    Copyright 2014-2025 <a href="mailto:asialjim@qq.com">Asial Jim</a>
+ *
+ *    Licensed under the Apache License, Version 2.0 (the "License");
+ *    you may not use this file except in compliance with the License.
+ *    You may obtain a copy of the License at
+ *
+ *        http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *    Unless required by applicable law or agreed to in writing, software
+ *    distributed under the License is distributed on an "AS IS" BASIS,
+ *    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *    See the License for the specific language governing permissions and
+ *    limitations under the License.
+ */
+
 let api = [];
 const apiDocListSize = 1
 api.push({
@@ -18,6 +34,13 @@ api[0].list[0].list.push({
     url: 'https://dev.gateway.api.asialjim.cn/api/domain/clinc/prescription/record/last',
     methodId: '79a7fa47eb6d790a64ec8f856ad85a1c',
     desc: 'queryLastRecord',
+});
+api[0].list[0].list.push({
+    order: '2',
+    deprecated: 'false',
+    url: 'https://dev.gateway.api.asialjim.cn/api/domain/clinc/prescription/record/{id}',
+    methodId: '1b490fa8dba1e4c71f0ab1baf6d99c0e',
+    desc: 'queryById',
 });
 document.onkeydown = keyDownSearch;
 function keyDownSearch(e) {

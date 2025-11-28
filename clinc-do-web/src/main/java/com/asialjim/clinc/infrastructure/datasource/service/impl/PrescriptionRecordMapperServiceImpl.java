@@ -16,10 +16,12 @@
 
 package com.asialjim.clinc.infrastructure.datasource.service.impl;
 
+import com.asialjim.clinc.infrastructure.cache.ClincCache;
 import com.asialjim.clinc.infrastructure.datasource.mapper.PrescriptionRecordBaseMapper;
 import com.asialjim.clinc.infrastructure.datasource.po.PrescriptionRecordPo;
 import com.asialjim.clinc.infrastructure.datasource.service.PrescriptionRecordMapperService;
 import com.mybatisflex.spring.service.impl.ServiceImpl;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -31,4 +33,10 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public class PrescriptionRecordMapperServiceImpl extends ServiceImpl<PrescriptionRecordBaseMapper, PrescriptionRecordPo> implements PrescriptionRecordMapperService {
+
+    @Override
+    @Cacheable(value = ClincCache.Name.prescriptionRecordById, key = "#id")
+    public PrescriptionRecordPo queryById(String id) {
+        return getById(id);
+    }
 }

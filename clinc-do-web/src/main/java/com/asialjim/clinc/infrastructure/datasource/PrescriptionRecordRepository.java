@@ -40,6 +40,13 @@ import java.util.Objects;
 public class PrescriptionRecordRepository {
     private final PrescriptionRecordMapperService prescriptionRecordMapperService;
 
+
+
+    public PrescriptionRecordVo queryById(String id) {
+        PrescriptionRecordPo  po = this.prescriptionRecordMapperService.queryById(id);
+        return PrescriptionRecordPo.toVo(po);
+    }
+
     public PageData<PrescriptionRecordVo> queryLastRecord(Long page, Long size, QueryLastPrescriptionRecordReq req) {
         Page<PrescriptionRecordPo> pageCondition = Pageable.ofPage(PageParameter.pageOf(page, size), MyBatisFlexPageFun.of());
         QueryChain<PrescriptionRecordPo> chain = this.prescriptionRecordMapperService.queryChain();
@@ -68,4 +75,5 @@ public class PrescriptionRecordRepository {
 
         return PageData.of(data, PrescriptionRecordPo::toVo);
     }
+
 }

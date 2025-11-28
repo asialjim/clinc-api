@@ -14,4 +14,20 @@
  *    limitations under the License.
  */
 
-package com.asialjim.clinc.infrastructure.datasource;
+package com.asialjim.clinc.infrastructure.mams;
+
+
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+
+/**
+ * mams 应用Bean 扫描
+ *
+ * @author <a href="mailto:asialjim@hotmail.com">Asial Jim</a>
+ * @version 1.0
+ * @since 2025/11/28, &nbsp;&nbsp; <em>version:1.0</em>
+ */
+@Configuration
+@ComponentScan("com.asialjim.microapplet")
+public class MamsBean {
+}
